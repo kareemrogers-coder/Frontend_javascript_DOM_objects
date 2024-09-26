@@ -11,7 +11,7 @@
 <p> Please select the button to display all available items name, price and description</p>
 
 <button id="myBtn">Click here</button>
-<p id="demo"></p>
+<div id="demo"></div>
 
 <script>
 let products = [
@@ -24,12 +24,16 @@ document.getElementById("myBtn").addEventListener("click", function(){
     myfunction(products);
 });
 
-// document.getElementById("myBtn").addEventListener("click", function(){
-//     alert(products);
-// });
 
 function myfunction(products){
-document.getElementById("demo").innerHTML = products;
+const container=document.getElementById("demo");
+products.forEach(product=>{ 
+    const productDiv = document.createElement("div")
+    productDiv.innerHTML = `
+    <h3>${product.name} $${product.price}</h3> Description: ${product.description}
+    `
+container.appendChild(productDiv)
+})
 }
 </script>
     
